@@ -1,0 +1,192 @@
+<?php
+
+namespace App\Http\Controllers\Config;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Config\Config;
+use App\Notifications\DemoNotification;
+use App\Repositories\Config\ConfigRepository;
+use App\Repositories\MeetingRepository;
+
+class ConfigController extends Controller
+{
+    protected $repo;
+    protected $request;
+    protected $meeting_repo;
+
+    /**
+     * Instantiate a new controller instance
+     * @return void
+     */
+    public function __construct(
+        ConfigRepository $repo,
+        Request $request,
+        MeetingRepository $meeting_repo
+    ) {
+        $this->repo = $repo;
+        $this->request = $request;
+        $this->meeting_repo = $meeting_repo;
+
+        $this->middleware('restricted_test_mode_action')->only(['store']);
+        $this->middleware(['permission:access-config'])->except(['preRequisite', 'index', 'store']);
+    }
+
+    /**
+     * Get config pre requisite
+     * @get ("/api/config/pre-requisite")
+     * @return array
+     */
+    public function preRequisite()
+    {
+        return $this->ok($this->repo->getPreRequisite());
+    }
+
+    /**
+     * Get config
+     * @get ("/api/config")
+     * @return array
+     */
+    public function index()
+    {
+        return $this->ok($this->repo->getConfig());
+    }
+
+    /**
+     * Store config
+     * @post ("/api/config")
+     * @param ({
+     *      @Parameter("config", type="array", required="optional", description="Config variables"),
+     * })
+     * @return array
+     */
+    public function store()
+    {
+        $this->authorize('create', Config::class);
+
+        $this->repo->store();
+
+        return $this->success(['message' => __('global.stored', ['attribute' => __('config.config')])]);
+    }
+
+    /**
+     * Store notification vapid key
+     * @post ("/api/config/notification")
+     * @return array
+     */
+    public function notification()
+    {
+        $this->repo->setNotificationConfig();
+
+        return $this->success(['message' => __('global.stored', ['attribute' => __('config.config')])]);
+    }
+
+    /**
+     * Show demo notification
+     * @get ("/api/config/notification")
+     * @return array
+     */
+    public function showDemoNotification(Request $request)
+    {
+        $request->user()->notify(new DemoNotification);
+    }
+
+    /**
+     * Upload asset
+     * @post ("/api/config/assets")
+     * @param ({
+     *      @Parameter("asset", type="file", required="true", description="Asset to be uploaded"),
+     * })
+     * @return array
+     */
+    public function uploadAsset()
+    {
+        $type = request('type');
+
+        $config = $this->repo->uploadAsset();
+
+        return $this->success(['message' => __('global.uploaded', ['attribute' => __('config.assets.'.$type)]), 'asset' => $config->getValue($type)]);
+    }
+
+    /**
+     * Remove asset
+     * @post ("/api/config/assets")
+     * @return Response
+     */
+    public function removeAsset()
+    {
+        $type = request('type');
+
+        $this->repo->removeAsset();
+
+        return $this->success(['message' => __('global.removed', ['attribute' => __('config.assets.'.$type)])]);
+    }
+    
+    /**
+     * Upload file for import
+     * @post ("/api/config/system/google_api_key_json")
+     * @param ({
+     *      @Parameter("file", type="file", required="required", description="File to be uploaded")
+     * })
+     * @return Response
+     */
+    public function startImport()
+    {	
+    	return $this->success($this->repo->startImport());
+    }
+
+    /**
+     * Remove Json File
+     * @post ("/api/config/system/{fileName}")
+     * @return Response
+     */
+    public function removeFile($fileName)
+    {
+        return $this->ok($this->repo->removeFile($fileName));
+    }
+
+    /**
+     * Get Translator
+     * @get ("/api/config/translator/?uuid=uuid")
+     * @param ({
+     *      @Parameter(uuid="uuid"),
+     * })
+     * @return boolean
+     */
+    public function translator()
+    {
+        $uuid = request('uuid');
+
+        return $this->ok($this->repo->getTranslator($uuid));
+    }
+
+    /**
+     * Store config
+     * @post ("/api/config/azure_api_key/")
+     * @param ({
+     *      @Parameter(azure_api_key="String"),
+     * })
+     * @return boolean
+     */
+    public function saveAzureApiKey()
+    {
+        $azure_api_key = request('azure_api_key');
+
+        return $this->success($this->repo->saveAzureApiKey($azure_api_key));
+    }
+
+    /**
+     * Store config
+     * @post ("/api/config/google_api_key/")
+     * @param ({
+     *      @Parameter(google_api_key="String"),
+     * })
+     * @return boolean
+     */
+    public function saveGoogleApiKey()
+    {
+        $google_api_key = request('google_api_key');
+
+        return $this->success($this->repo->saveGoogleApiKey($google_api_key));
+    }
+}

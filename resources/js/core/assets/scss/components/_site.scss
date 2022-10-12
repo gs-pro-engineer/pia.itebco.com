@@ -1,0 +1,244 @@
+@use 'sass:math';
+
+.search-preview-wrapper {
+    width: 660px;
+    padding: 15px;
+    font-family: arial, sans-serif;
+
+    .title {
+        white-space: nowrap;
+        color: rgb(26, 13, 171);
+        font-size: 20px;
+        line-height: 1.3;
+        font-weight: normal;
+        display: inline-block;
+        vertical-align: top;
+        text-overflow: ellipsis;
+        text-decoration: none;
+        max-width: 600px;
+        margin: 0px;
+        overflow: hidden;
+    }
+
+    .url {
+        white-space: nowrap;
+        font-size: 16px;
+        color: rgb(0, 102, 33);
+    }
+
+    .description {
+        color: rgb(84, 84, 84);
+        position: relative;
+        max-width: 600px;
+        padding-top: 1px;
+        font-size: 14px;
+        line-height: 1.57;
+    }
+}
+
+.gallery-manager-wrapper {
+
+    .gallery-manager-form {
+        border-bottom: $border-width solid $light;
+    }
+
+    .gallery-manager {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .gallery-item-form {
+        position: relative;
+        width: 500px;
+        min-width: 500px;
+        max-width: 500px;
+        padding: math.div($side-margin, 2);
+        border: $border-width*5 solid $light;
+        border-radius: $border-radius;
+
+        .form-footer {
+            display: flex;
+
+            & > * {
+                flex-grow: 1;
+            }
+        }
+    }
+
+    .files-list-wrapper {
+        margin-top: 1rem;
+
+        .files-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+
+            &>.file-details-row {
+                display: inline-flex;
+                transition: $transition-all-easeinout;
+                background-color: $gray-100;
+                border: $border-width solid transparent;
+                border-radius: $border-radius;
+                overflow: hidden;
+                flex-direction: column;
+                margin: 0 0.5rem 0.5rem;
+                vertical-align: top;
+                flex-basis: 23.4%;
+
+                &>* {
+                    cursor: default;
+                    padding: 0.6rem;
+                }
+
+                .file-icon {
+                    img {
+                        width: 100%;
+                        max-height: 100%;
+                        max-width: 100%;
+                    }
+
+                    span {
+                        font-size: 2rem;
+                        color: rgba(0, 0, 0, 0.3);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 3rem;
+                        height: 3rem;
+                    }
+                }
+
+                .file-details {
+                    flex-grow: 1;
+                    border-left: $border-width solid rgba(0, 0, 0, 0.05);
+                    text-align: center;
+                    padding-top: 0;
+
+                    h6 {
+                        font-weight: $font-weight-bold;
+                        margin-bottom: 0.2rem;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                    p {
+                        font-size: 0.75rem;
+                        color: rgba(0, 0, 0, 0.4);
+                        margin: 0;
+                    }
+                }
+
+                .status-wrapper {
+                    padding-top: 0;
+
+                    &,
+                    &>* {
+                        display: flex;
+                    }
+
+                    .status-text,
+                    .status-icon,
+                    .status-action {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: rgba(0, 0, 0, 0.3);
+                        margin: 0 1rem;
+                    }
+
+                    .status-icon {
+                        font-size: 2rem;
+                    }
+
+                    .status-action {
+                        color: $primary;
+                        cursor: pointer;
+                    }
+                }
+
+                .file-icon {
+                    .status-wrapper {
+                        justify-content: center;
+                        width: 100%;
+
+                        .img-thumbnail {
+                            width: 100%;
+                        }
+
+                        .status-uploading-wrapper, .status-uploaded-wrapper, .status-cancelled-wrapper, .status-removed-wrapper, .status-error-wrapper,  {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            width: 100%;
+                            min-height: 145px;
+                            text-align: center;
+
+                            .progress-ring-wrapper {
+                                flex-grow: 1;
+                                margin: 1rem 0;
+                                text-align: center;
+
+                                svg {
+                                    margin: 0 auto;
+                                }
+                            }
+
+
+                            .status-text,
+                            .status-icon,
+                            .status-action {
+                                text-align: center;
+                            }
+
+                            .status-icon {
+                                height: auto;
+                                width: auto;
+                            }
+                        }
+                    }
+                }
+
+                &:hover {
+                    background-color: $gray-300;
+                }
+
+                &.selected {
+                    background-color: rgba($primary, 0.2);
+                    border-color: $primary;
+                }
+            }
+        }
+    }
+
+    .gallery-manager {
+        &.file-selected {
+
+            .files-list-wrapper {
+                .files-list {
+                    &>.file-details-row {
+                        flex-basis: 45.4%;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+.draggable-list li.menu-item.draggable-list-item {
+    padding: 1rem !important;
+
+    &+li.menu-item.draggable-list-item {
+        border-top: 1px solid #d1d2d4;
+    }
+}
+
+.draggable-list > div {
+    background: $light;
+}
+
+.draggable-list li.menu-item .draggable-list.child-draggable-list > div {
+    background: #edf0f3;
+}

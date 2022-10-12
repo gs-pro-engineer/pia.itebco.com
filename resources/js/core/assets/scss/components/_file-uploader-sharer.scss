@@ -1,0 +1,159 @@
+.file-uploader {
+    .files-list-wrapper {
+        margin-top: 1rem;
+
+        .files-list {
+            list-style: none;
+            padding: 0;
+
+            &>.file-details-row {
+                display: flex;
+                transition: $transition-all-easeinout;
+                background-color: $gray-100;
+                overflow: hidden;
+
+                &>.file-details-wrapper {
+                    display: flex;
+                    flex-grow: 1;
+                    overflow: hidden;
+
+                    &>* {
+                        padding: 0.4rem 0.6rem;
+                    }
+                }
+
+                &:nth-child(even) {
+                    background-color: $gray-200;
+                }
+                &:first-child {
+                    border-radius: $border-radius $border-radius 0 0;
+                }
+                &:last-child {
+                    border-radius: 0 0 $border-radius $border-radius;
+                }
+
+                &>* {
+                    padding: 0.4rem 0.6rem;
+                }
+
+                .file-icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    span {
+                        font-size: 2rem;
+                        color: rgba(0, 0, 0, 0.3);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 3rem;
+                        height: 3rem;
+                    }
+                }
+
+                .file-details {
+                    flex-grow: 1;
+                    border-left: $border-width solid rgba(0, 0, 0, 0.05);
+
+                    h6 {
+                        font-weight: $font-weight-bold;
+                        margin-bottom: 0.2rem;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                    p {
+                        font-size: 0.75rem;
+                        color: rgba(0, 0, 0, 0.4);
+                        margin: 0;
+                    }
+                }
+
+                .status-wrapper {
+
+                    &,
+                    &>* {
+                        display: flex;
+                    }
+
+                    .status-text,
+                    .status-icon,
+                    .status-action {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: rgba(0, 0, 0, 0.3);
+                        margin: 0 1rem;
+                    }
+
+                    .status-icon {
+                        font-size: 2rem;
+                    }
+
+                    .status-action {
+                        color: $primary;
+                        cursor: pointer;
+                    }
+
+                    &.actions-wrapper {
+                        padding: 0;
+
+                        .actions-buttons {
+                            .remove-btn, .download-btn, .action-btn {
+                                display: flex;
+                                align-items: center;
+                                background-color: transparent;
+                                border: none;
+                                border-left: $border-width solid rgba(0, 0, 0, 0.05);
+                                padding: 0 1rem;
+                                cursor: pointer;
+                                color: $primary;
+                                transform: scale(1);
+
+                                &:hover {
+                                    transform: scale(1.2);
+                                }
+                            }
+
+                            .remove-btn {
+                                color: $danger;
+                            }
+                        }
+                    }
+                }
+
+                &:hover {
+                    background-color: $gray-300;
+                }
+            }
+        }
+    }
+
+    &.file-sharer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        overflow: hidden;
+
+        .files-list-wrapper {
+            flex-grow: 1;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            overflow: auto;
+
+            .files-list {
+                &>.file-details-row {
+                    display: flex;
+                    flex-direction: column;
+
+                    .sharing-details {
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+}

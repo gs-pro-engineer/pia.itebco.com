@@ -1,0 +1,232 @@
+.dropdown,
+.dropup,
+.dropright,
+.dropleft {
+    display: inline-block;
+}
+
+.dropdown .dropdown-toggle {
+    &.no-caret {
+        &:after {
+            display: none;
+        }
+    }
+}
+
+.dropdown-menu {
+    min-width: 12rem;
+
+    .dropdown-item {
+        padding: .5rem 1rem;
+        font-size: $font-size-sm;
+        > i,
+        > svg,
+        > span > i {
+            font-size: 1rem;
+            vertical-align: -17%;
+            min-width: 2rem;
+        }
+
+
+        &:active,
+        &:focus,
+        &:hover {
+            background: $light;
+        }
+    }
+    a.dropdown-item {
+        cursor: pointer;
+    }
+
+    &:before {
+        background: #ffffff;
+        box-shadow: none;
+        content: '';
+        display: block;
+        height: 16px;
+        width: 16px;
+        left: 20px;
+        position: absolute;
+        bottom: 100%;
+        transform: rotate(-45deg) translateY(1rem);
+        z-index: -5;
+        border-radius: 0.2rem;
+    }
+
+    &.dropdown-dir-up:before {
+        bottom: 3%;
+    }
+
+    &.dropdown-sm {
+
+    }
+
+    &.dropdown-md {
+        min-width: 18rem;
+    }
+
+    &.dropdown-lg {
+        min-width: 24rem;
+    }
+
+    &.dropdown-xl {
+        min-width: 30rem;
+    }
+
+
+    &.dropdown-menu-right {
+        &:before {
+            right: 34px;
+            left: auto !important;
+        }
+    }
+
+    .dropdown-divider {
+        margin: 0;
+    }
+}
+
+.dropdown-header {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: $gray-500;
+    font-size: .8rem;
+    font-weight: 700;
+}
+
+
+// Inverse dropdown menu
+
+.dropdown-menu-inverse {
+    background: #282f37;
+    border-color: #242a31;
+
+    .dropdown-item {
+        color: #dadada;
+
+        &:active,
+        &:focus,
+        &:hover {
+            color: #fff;
+            background: #31353e;
+        }
+    }
+
+    .dropdown-divider {
+        background: #191e23;
+    }
+}
+
+// Dropdown elements
+
+.dropdown-menu {
+    a.media {
+
+        > div {
+            &:first-child {
+                line-height: 1;
+            }
+        }
+
+        p {
+            color: $gray-600;
+        }
+        &:hover {
+            .heading, p {
+                color: theme-color("default") !important;
+            }
+        }
+    }
+}
+
+// Dropown: Sizes
+
+.dropdown-menu-sm {
+    min-width: 100px;
+    border: $border-radius-lg;
+}
+
+.dropdown-menu-lg {
+    min-width: 260px;
+    border-radius: $border-radius-lg;
+}
+
+.dropdown-menu-xl {
+    min-width: 450px;
+    border-radius: $border-radius-lg;
+}
+
+
+@include media-breakpoint-up(lg) {
+
+    .dropdown {
+        .dropdown-menu {
+            &:before {
+                background: #ffffff;
+                box-shadow: none;
+                content: '';
+                display: block;
+                height: 16px;
+                width: 16px;
+                left: 20px;
+                position: absolute;
+                bottom: 100%;
+                transform: rotate(-45deg) translateY(1rem);
+                z-index: -5;
+                border-radius: 0.2rem;
+            }
+        }
+    }
+    .dropdown.dropup {
+        .dropdown-menu {
+            &:before {
+                background: #ffffff;
+                box-shadow: none;
+                content: '';
+                display: block;
+                height: 16px;
+                width: 16px;
+                left: 20px;
+                position: absolute;
+                bottom: 5px;
+                transform: rotate(-45deg) translateY(1rem);
+                z-index: -5;
+                border-radius: 0.2rem;
+            }
+        }
+    }
+
+    .dropdown.dropup .dropdown-menu, .dropdown-menu {
+        &.dropdown-menu-right {
+            &:before {
+                right: 26px;
+                left: auto !important;
+            }
+        }
+    }
+
+}
+
+@each $key,
+$value in $default-palette {
+    .dropdown, .dropdown.dropup {
+        .dropdown-menu {
+            &.dropdown-#{$key} {
+                background: map-get($value, "background-color");
+                &:before {
+                    background: map-get($value, "background-color");
+                }
+                a.dropdown-item, .dropdown-item {
+                    color: map-get($value, "foreground-color");
+
+                    &:active,
+                    &:focus,
+                    &:hover {
+                        color: map-get($value, "second-foreground-color");
+                        background: darken(map-get($value, "background-color"), 10);
+                    }
+                }
+            }
+        }
+    }
+}

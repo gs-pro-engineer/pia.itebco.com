@@ -1,0 +1,18 @@
+@import "../palettes";
+
+$light: map-get($default-palette, "light");
+$amount: 2;
+$light: map-set($light, "background-color", #ffffff);
+$light: map-set($light, "odd-color", #ffffff);
+$light: map-set($light, "even-color", darken(map-get($background-colors, 'light'), $amount));
+$light: map-set($light, "border-color", darken(map-get($background-colors, 'light'), $amount * 2));
+$light: map-set($light, "hover-color", darken(map-get($background-colors, 'light'), $amount * 2));
+
+$dark: map-get($default-palette, "dark");
+$primary: map-get($default-palette, "primary");
+
+$table-palettes: (
+	"light": $light,
+	"dark": $dark,
+	"primary": $primary
+);

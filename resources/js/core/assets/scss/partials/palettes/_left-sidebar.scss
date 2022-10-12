@@ -1,0 +1,37 @@
+@import "../palettes";
+
+$light: map-get($default-palette, "light");
+$light: map-set($light, "background-color", #ffffff);
+$light: map-set($light, "border-right", "1px solid " + map-get($light, "border-color"));
+
+$dark: map-get($default-palette, "dark");
+$dark: map-set($dark, "border-right", "none");
+
+$primary: map-get($default-palette, "primary");
+$primary: map-set($primary, "border-right", "none");
+
+$secondary: map-get($default-palette, "secondary");
+$secondary: map-set($secondary, "border-right", "none");
+
+$info: map-get($default-palette, "info");
+$info: map-set($info, "border-right", "none");
+
+$success: map-get($default-palette, "success");
+$success: map-set($success, "border-right", "none");
+
+$warning: map-get($default-palette, "warning");
+$warning: map-set($warning, "border-right", "none");
+
+$danger: map-get($default-palette, "danger");
+$danger: map-set($danger, "border-right", "none");
+
+$left-sidebar-palettes: (
+	"light": $light,
+	"dark": $dark,
+	"primary": $primary,
+	"secondary": $secondary,
+	"info": $info,
+	"success": $success,
+	"warning": $warning,
+	"danger": $danger
+);

@@ -1,0 +1,390 @@
+@import "~@js/core/assets/scss/partials/palettes";
+
+$backgroundColor: map-get($colors, 'darker');
+$foregroundColor: map-get($colors, 'light');
+$highlightColor: map-get($colors, 'insti');
+
+.profile-card {
+    border-radius: $border-radius;
+    overflow: hidden;
+
+    .profile-image-background {
+        min-height: 100px;
+
+        &.has-cover-image {
+            min-height: 160px !important;
+            background-position: top center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+            box-shadow: inset 100px -100px 100px 100px rgb(0 0 0 / 5%), inset 0 -8px 16px 0 rgb(0 0 0 / 20%) !important;
+        }
+    }
+
+    .profile-details-wrapper {
+        margin-top: -4.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .profile-image-wrapper {
+            background: white;
+            width: 150px;
+            height: 150px;
+            border-width: 6px;
+            border-style: solid;
+            overflow: hidden;
+            border-radius: 50%;
+            padding: 0;
+
+            .profile-image {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                transform: scale(1.05);
+                position: relative;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            &:after {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                content: "";
+                z-index: 1;
+                background: rgba(0, 0, 0, 0);
+            }
+        }
+
+        .profile-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: $margin-common;
+            width: 100%;
+
+            .profile-heading {
+                font-weight: $font-weight-bold;
+                margin-bottom: 0.1rem;
+                text-align: center;
+            }
+
+            .profile-sub-heading {
+                margin-bottom: 0;
+            }
+
+            .profile-extras {
+                font-size: 80%;
+                width: 100%;
+                text-align: center;
+
+                &.has-slot {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 0.5rem;
+                    padding-top: 0.5rem;
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+
+
+    &.has-edit-image {
+        .profile-image-background {
+            position: relative;
+            min-height: 160px;
+
+            .edit-image-wrapper {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: rgb(0, 0, 0, 0.25);
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-start;
+                align-content: flex-start;
+                color: #fff;
+                font-size: 1.5rem;
+                padding: 0.875rem;
+                cursor: pointer;
+                display: none;
+            }
+
+            &:hover {
+                .edit-image-wrapper {
+                    display: flex;
+                }
+            }
+
+            &.has-cover-image {
+                min-height: 160px;
+                background-position: top center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                box-shadow: inset 100px -100px 100px 100px rgb(0 0 0 / 5%), inset 0 -8px 16px 0 rgb(0 0 0 / 20%);
+            }
+        }
+
+        .profile-details-wrapper {
+            .profile-image-wrapper {
+                .edit-image-wrapper {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 2;
+                    background: rgb(0, 0, 0, 0.25);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    align-content: center;
+                    color: #fff;
+                    font-size: 2rem;
+                    cursor: pointer;
+                    display: none;
+                }
+
+                &:hover {
+                    .edit-image-wrapper {
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+
+    .buttons-container {
+        display: block;
+
+        .buttons-wrapper {
+            display: flex;
+            width: 100%;
+        }
+
+        .buttons {
+            display: flex;
+            width: 100%;
+
+            .btn {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+    }
+
+    &.horizontal-layout {
+        .profile-image-background {
+            min-height: 60px;
+        }
+
+        .profile-details-wrapper {
+            margin-top: -55px;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: flex-start;
+            padding: 0.5rem 1rem 0.7rem;
+
+            .profile-image-wrapper {
+                background: white;
+                width: 90px;
+                height: 90px;
+                border-width: 4px;
+                flex-shrink: 0;
+
+                .profile-image {
+                    img {}
+                }
+
+                &:after {}
+            }
+
+            .profile-details {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: stretch;
+                margin-left: 0.6rem;
+                padding: 0;
+                overflow: hidden;
+
+                .profile-heading {
+                    color: $white;
+                    margin-top: 1.1rem;
+                    text-align: left;
+                    white-space: pre;
+                    width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    margin-bottom: 0.4rem;
+                }
+
+                .profile-sub-heading {
+                    margin-bottom: 0;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    font-size: 95%;
+                    line-height: 18px;
+                    margin-bottom: 0.2rem;
+                }
+
+                .profile-extras {
+                    margin-bottom: 0.2rem;
+                    text-align: left;
+                }
+            }
+        }
+
+    }
+
+    &.sidebar-profile-card {
+        border-radius: 0rem;
+
+        .profile-image-background {
+            min-height: 70px;
+        }
+
+        .profile-details-wrapper {
+            margin-top: -3.5rem;
+            .profile-image-wrapper {
+                width: 100px;
+                height: 100px;
+            }
+            .profile-extras {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.small-profile-card {
+    border-radius: $border-radius;
+    overflow: hidden;
+
+    .profile-details-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .profile-image-wrapper {
+            background: white;
+            width: 150px;
+            height: 150px;
+            border-width: 6px;
+            border-style: solid;
+            overflow: hidden;
+            border-radius: 50%;
+            padding: 0;
+
+            .profile-image {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                transform: scale(1.05);
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            &:after {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                content: "";
+                z-index: 1;
+                background: rgba(0, 0, 0, 0);
+            }
+        }
+
+        .profile-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: $margin-common;
+            width: 100%;
+
+            .profile-heading {
+                font-weight: $font-weight-bold;
+                margin-bottom: 0.1rem;
+                text-align: center;
+            }
+
+            .profile-sub-heading {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+@each $key,
+$value in $default-palette {
+    [data-card-color="#{$key}"] {
+
+        &.profile-card {
+            background: map-get($value, "background-color");
+            color: map-get($value, "foreground-color");
+
+            .profile-image-background {
+                background: map-get($value, "second-foreground-color");
+            }
+
+            .profile-details-wrapper {
+                .profile-image-wrapper {
+                    border-color: map-get($value, "background-color");
+                    box-shadow: 0 2px 1px 1px rgba(0, 0, 0, 0.1), inset 0 1px 8px 0px rgba(0, 0, 0, 0.1);
+                    position: relative;
+                }
+
+                .profile-heading {
+                    color: map-get($value, "second-foreground-color");
+                }
+
+                .profile-sub-heading {
+                    color: map-get($value, "foreground-color");
+                }
+            }
+
+            &.sidebar-profile-card {
+                background: darken(map-get($value, "background-color"), 5);
+
+
+                .profile-image-background {
+                    background: darken(map-get($value, "background-color"), 5);
+                    border-top: 3px solid darken(map-get($value, "background-color"), 6);
+                }
+
+                .profile-details-wrapper {
+                    .profile-image-wrapper {
+                        border-color: lighten(map-get($value, "background-color"), 90);
+                    }
+                }
+            }
+        }
+    }
+
+    [data-card-image-bg-color="#{$key}"] {
+        &.profile-card {
+            .profile-image-background {
+                background: map-get($value, "background-color");
+            }
+        }
+    }
+}

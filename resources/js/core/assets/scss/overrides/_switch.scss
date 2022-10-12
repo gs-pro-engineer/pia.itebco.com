@@ -1,0 +1,36 @@
+.switch-wrapper {
+    display: flex;
+    margin-bottom: 1rem;
+
+    > .input-group-material-label {
+        padding-left: $input-padding-x;
+        padding-right: $input-padding-x;
+    }
+    > .filler {
+        flex-grow: 1;
+    }
+
+    &.text-light {
+        label {
+            color: $light;
+        }
+    }
+
+    &.text-dark {
+        label {
+            color: $dark;
+        }
+    }
+
+    &.text-primary {
+        label {
+            color: $primary;
+        }
+    }
+
+    &.text-info {
+        label {
+            color: $info;
+        }
+    }
+}

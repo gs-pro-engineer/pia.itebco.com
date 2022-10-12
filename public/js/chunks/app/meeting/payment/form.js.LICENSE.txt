@@ -1,0 +1,5 @@
+/**
+ * vue-coerce-props v1.0.0
+ * (c) 2018 Eduardo San Martin Morote <posva13@gmail.com>
+ * @license MIT
+ */

@@ -1,0 +1,285 @@
+.input-group {
+    box-shadow: $input-box-shadow;
+    border-radius: $input-border-radius;
+    transition: $transition-base;
+
+    .form-control {
+        box-shadow: none;
+
+        &:not(:first-child) {
+            border-left: 0;
+            padding-left: 0;
+        }
+
+        &:not(:last-child) {
+            border-right: 0;
+            padding-right: 0;
+        }
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+.input-group-text {
+    transition: $input-transition;
+}
+
+.form-group.input-group-material {
+    box-shadow: $input-alternative-box-shadow;
+    border: 0;
+    transition: box-shadow .15s ease;
+    position: relative;
+    padding-top: 16px;
+    margin-bottom: 16px;
+
+    &.was-validated:not(.focused) .form-control:valid,
+    &:not(.focused) .form-control.is-valid,
+    &.was-validated:not(.focused) .custom-select:valid,
+    &:not(.focused) .custom-select.is-valid {
+        box-shadow: 0 1px 3px $success, 0 1px 0 rgba(0, 0, 0, 0.02);
+    }
+
+    &.was-validated:not(.focused) .form-control:invalid,
+    &:not(.focused) .form-control.is-invalid,
+    &.was-validated:not(.focused) .custom-select:invalid,
+    &:not(.focused) .custom-select.is-invalid {
+        box-shadow: 0 1px 3px $danger, 0 1px 0 rgba(0, 0, 0, 0.02);
+    }
+
+    &.was-validated.has-success label,
+    .form-control.is-valid+label,
+    .custom-select.is-valid+label {
+        color: $success;
+    }
+
+    &.was-validated.has-error label,
+    .form-control.is-invalid+label,
+    .custom-select.is-invalid+label {
+        color: $danger;
+    }
+
+    label {
+        position: absolute;
+        top: 1.75rem;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        cursor: text;
+        transition: 0.2s ease all;
+        margin: 0;
+        padding: 0 0.75rem;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        color: $gray;
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 49%;
+            height: $input-height-border;
+            width: 1px;
+            visibility: hidden;
+            background-color: $input-focus-alternative-border-color;
+            transition: 0.2s ease all;
+        }
+    }
+
+    .datepicker~label {
+        z-index: 0;
+    }
+
+    .input-group-prepend,
+    .input-group-append {
+        margin-bottom: 2px;
+    }
+
+    .input-group-prepend~label {
+        padding-left: 42px;
+    }
+
+    .input-group-append~label {
+        padding-right: 42px;
+    }
+
+    &.has-placeholder {
+        label {
+            opacity: 0;
+        }
+    }
+
+    &.not-empty {
+        label {
+            top: 0.25rem;
+            font-size: $input-btn-font-size-sm;
+        }
+
+        &.has-placeholder {
+            label {
+                opacity: 1;
+            }
+        }
+    }
+
+    .form-control {
+        position: relative;
+        background-color: transparent;
+        padding: $input-btn-padding-y $input-btn-padding-x !important;
+
+        &.datepicker + .form-control {
+            margin-bottom: 0;
+        }
+    }
+
+    .form-control,
+    .input-group-text {
+        border: 0;
+        box-shadow: none;
+    }
+
+    &.focused label,
+    .form-control:focus~label,
+    .form-control.active~label {
+        top: 0.25rem;
+        opacity: 1;
+        color: $input-focus-alternative-border-color;
+        font-size: $input-btn-font-size-sm;
+
+        &:after {
+            visibility: visible;
+            width: 100%;
+            left: 0;
+        }
+    }
+
+    &.not-empty .input-group-prepend~label {
+        padding-left: 0.75rem;
+    }
+
+    &.not-empty .input-group-append~label {
+        padding-right: 0.75rem;
+    }
+
+    &.focused .input-group-prepend~label,
+    .input-group-prepend+.form-control:focus~label,
+    .input-group-prepend+.form-control.active~label {
+        padding-left: 0.75rem;
+    }
+
+    &.focused .input-group-append~label,
+    .input-group-append+.form-control:focus~label,
+    .input-group-append+.form-control.active~label {
+        padding-right: 0.75rem;
+    }
+
+    &+.invalid-feedback {
+        padding-left: $input-padding-x;
+        padding-right: $input-padding-x;
+    }
+
+    .input-group-append>.input-group-text .custom-control.custom-checkbox {
+        .custom-control-label {
+            top: 0;
+            right: 0;
+            left: auto;
+            border-bottom: none;
+
+            &:before {
+                top: 0;
+                right: 0;
+                left: auto;
+            }
+
+            &:after {
+                top: 0;
+                right: 0;
+                visibility: visible;
+                left: 0.5rem;
+                background-color: transparent;
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+    }
+
+    .input-group-append>.input-group-text {
+        .clear-date {
+            cursor: pointer;
+            color: inherit;
+            padding: 0 10px;
+        }
+    }
+
+    .input-group-append>.input-group-text .btn {
+        margin: -0.625rem -0.75rem;
+        box-shadow: none;
+    }
+
+    &.is-naked {
+        box-shadow: none;
+        padding-top: 0;
+        margin-bottom: 0;
+        .form-control, .input-group-text {
+            padding: 0.1rem !important;
+            height: 2rem;
+        }
+    }
+}
+
+.form-group.input-group-alternative {
+    box-shadow: $input-alternative-box-shadow;
+    border: 0;
+    transition: box-shadow .15s ease;
+    position: relative;
+
+    label {
+        display: block;
+        padding-top: $input-padding-y;
+        padding-left: $input-padding-x;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    .form-control,
+    .input-group-text {
+        border: 0;
+        box-shadow: none;
+    }
+
+    &+.invalid-feedback {
+        padding-left: $input-padding-x;
+        padding-right: $input-padding-x;
+    }
+}
+
+// .focus class is applied dinamycally from theme.js
+.focused {
+    .input-group {
+        box-shadow: $input-focus-box-shadow;
+    }
+
+    .input-group-text {
+        color: $input-group-addon-focus-color;
+        border-color: $input-group-addon-focus-border-color;
+    }
+
+    .form-control {
+        border-color: $input-group-addon-focus-border-color;
+    }
+}
+
+.input-group.has-label>.input-group-prepend:not(:first-child)>.input-group-text {
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+}
+
+label > .required-asterix {
+    color: $danger;
+}
+
+input[disabled] {
+   color: $gray;
+}

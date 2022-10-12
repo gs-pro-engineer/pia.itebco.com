@@ -1,0 +1,16 @@
+[class*="shadow"] {
+	@if $enable-transitions {
+        transition: $transition-all-easeinout;
+    }
+}
+
+.shadow-sm--hover:hover { box-shadow: $box-shadow-sm !important; }
+.shadow--hover:hover { box-shadow: $box-shadow !important; }
+.shadow-lg--hover:hover { box-shadow: $box-shadow-lg !important; }
+.shadow-none--hover:hover { box-shadow: none !important; }
+
+.shadow {
+    &.shadow-sm--hover:hover { box-shadow: $box-shadow !important; }
+    &.shadow--hover:hover { box-shadow: $box-shadow-xl !important; }
+    &.shadow-lg--hover:hover { box-shadow: $box-shadow-lg !important; }
+}

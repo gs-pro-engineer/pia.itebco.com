@@ -1,0 +1,12 @@
+// for nprogress
+#nprogress .bar {
+    background: #00cbff;
+    border-bottom: 1px solid #3cd7ff;
+    z-index: 10000;
+    height: 3px;
+}
+
+#nprogress .spinner {
+    top: $navbar-height + $margin-common !important;
+    right: $margin-common;
+}

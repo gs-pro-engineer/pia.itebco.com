@@ -1,0 +1,479 @@
+.multiselect {
+
+    &.input-group-material {
+        box-shadow: $input-alternative-box-shadow;
+        border: 0;
+        transition: box-shadow .15s ease;
+        position: relative;
+        padding-top: 16px;
+        margin-bottom: 16px;
+
+        .multiselect__select {
+            bottom: 1px;
+            top: auto;
+            height: 46px;
+
+            &:before {
+                top: 60%;
+            }
+        }
+
+        .multiselect__tags {
+            border: 0;
+            position: relative;
+            min-height: calc(2.75rem + 2px);
+            background: transparent;
+
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 49%;
+                height: $input-height-border;
+                width: 1px;
+                visibility: hidden;
+                background-color: $input-focus-alternative-border-color;
+                transition: 0.2s ease all;
+            }
+
+            .multiselect__placeholder {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                cursor: text;
+                transition: 0.2s ease all;
+                margin: 0;
+                padding: 0.75rem 0.75rem;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+                color: $gray;
+            }
+
+            .multiselect__input,
+            .multiselect__single {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                line-height: 28px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .multiselect__content-wrapper {
+            box-shadow: $dropdown-box-shadow;
+        }
+
+        &.multiselect--active {
+
+            .multiselect__tags {
+                &:after {
+                    visibility: visible;
+                    width: 100%;
+                    left: 0;
+                }
+            }
+
+            .multiselect__placeholder {
+                display: block;
+                opacity: 1;
+                color: $input-focus-alternative-border-color;
+                font-size: $input-btn-font-size-sm;
+            }
+
+        }
+
+        &.padding-md .multiselect__option {
+            padding: 16px;
+        }
+
+        &.padding-sm .multiselect__option {
+            padding: 8px;
+
+            .multiselect__no_result, .multiselect__helper {
+                display: block;
+                padding: 4px;
+            }
+        }
+
+        &.padding-xs .multiselect__option {
+            padding: 4px;
+
+            .multiselect__no_result, .multiselect__helper {
+                display: block;
+                padding: 8px;
+            }
+        }
+
+        &.padding-0 .multiselect__option {
+            padding: 0;
+
+            .multiselect__no_result, .multiselect__helper {
+                display: block;
+                padding: 12px;
+            }
+        }
+
+    }
+
+    &.input-group-alternative {
+        box-shadow: $input-alternative-box-shadow;
+        border: 0;
+        transition: box-shadow .15s ease;
+        position: relative;
+
+        .multiselect__tags {
+            border: 0;
+        }
+    }
+
+
+    .multiselect__clear {
+        position: absolute;
+        right: 45px;
+        height: 46px;
+        width: 38px;
+        display: block;
+        cursor: pointer;
+        z-index: 2;
+        bottom: 1px;
+        top: auto;
+    }
+
+    .multiselect__clear:after,
+    .multiselect__clear:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 3px;
+        height: 14px;
+        background: #aaa;
+        top: 15px;
+        right: 6px;
+    }
+
+    .multiselect__clear:before {
+        transform: rotate(45deg)
+    }
+
+    .multiselect__clear:after {
+        transform: rotate(-45deg)
+    }
+
+}
+
+.multiselect-wrapper {
+    position: relative;
+    background: #ffffff;
+
+    .add-new-link {
+        position: absolute;
+        right: 0;
+        bottom: -25px;
+        display: none;
+    }
+
+    .multiselect {
+        &.input-group-material {}
+    }
+
+    .input-group-material-label {
+        display: none;
+        position: absolute;
+        top: 1.75rem;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        cursor: text;
+        transition: 0.2s ease all;
+        margin: 0;
+        padding: 0 0.75rem;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+    .input-group-material-label {
+        display: none;
+    }
+
+    &.not-empty .input-group-material-label {
+        display: block;
+        top: 0.25rem;
+        font-size: 0.75rem;
+    }
+
+    &.required {
+        .multiselect__placeholder {
+            &:after {
+                content: " *";
+                color: $danger;
+                font-size: 0.875rem;
+            }
+        }
+
+        .multiselect-wrapper {
+            .multiselect__placeholder {
+                &:after {
+                    content: "";
+                }
+            }
+
+            &.required {
+                .multiselect__placeholder {
+                    &:after {
+                        content: " *";
+                        color: $danger;
+                        font-size: 0.875rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .multiselect-with-image {
+
+        .multiselect {
+            .multiselect__option {
+                display: flex;
+                min-height: 50px;
+                align-items: center;
+
+                .option__image {
+
+                }
+
+                .option__desc {
+                    .option__title {
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+.multiselect,
+.multiselect__input,
+.multiselect__single {
+    font-size: 14px;
+}
+
+.person-option {
+    display: flex;
+    min-height: 50px;
+    align-items: center;
+
+    .person-image-wrapper {
+        width: 50px;
+        min-width: 50px;
+        height: 50px;
+        overflow: hidden;
+        border-radius: 50%;
+        background-color: $white;
+        border: $border-width solid $white;
+        display: flex;
+        align-items: center;
+
+        img.person-image {
+            width: 100%;
+        }
+
+        &.square-image {
+            border-radius: 0;
+        }
+
+        &.rounded-image {
+            border-radius: 0.5rem;
+        }
+
+        &.large-image {
+            width: 60px;
+            min-width: 60px;
+            height: 60px;
+        }
+
+        &.big-image {
+            width: 80px;
+            min-width: 80px;
+            height: 80px;
+        }
+
+        &.bigger-image {
+            width: 100px;
+            min-width: 100px;
+            height: 100px;
+        }
+        &.no-border {
+            border: 0;
+        }
+        &.light-border {
+            border: $border-width solid $light;
+        }
+        &.dark-border {
+            border: $border-width solid $dark;
+        }
+        &.primary-border {
+            border: $border-width solid $primary;
+        }
+    }
+
+    .person-details {
+        flex-grow: 1;
+        margin-left: 8px;
+        margin-right: 8px;
+        white-space: pre-wrap;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        span {
+            display: block;
+
+            &.title {
+                font-weight: $font-weight-bold;
+                margin-bottom: 5px;
+            }
+
+            &.subtitle {
+                opacity: 0.7;
+                font-size: 85%;
+
+                span {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    &.selected {
+        min-height: 25px;
+
+        .person-image-wrapper {
+            width: 25px;
+            min-width: 25px;
+            height: 25px;
+            border-color: $gray-darker;
+
+            &.no-border {
+                border: 0;
+            }
+            &.light-border {
+                border: $border-width solid $light;
+            }
+            &.dark-border {
+                border: $border-width solid $dark;
+            }
+            &.primary-border {
+                border: $border-width solid $primary;
+            }
+        }
+
+        .person-details {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
+
+            span {
+                display: inline-block;
+
+                &.title {
+                    font-weight: $font-weight-bold;
+                    margin-right: 5px;
+                }
+
+                &.subtitle {
+                    opacity: 0.7;
+                    font-size: 80%;
+                }
+            }
+        }
+    }
+
+    &.tag {
+        display: inline-flex;
+        background: $green;
+        padding: 3px;
+        margin-right: 5px;
+        border-radius: 1rem;
+        vertical-align: middle;
+
+        .person-details {
+            .title {
+                margin-bottom: 0;
+                color: $white;
+            }
+
+            .subtitle {
+                display: none;
+            }
+        }
+    }
+}
+
+.item-option {
+    display: flex;
+    min-height: 50px;
+    align-items: center;
+
+    .item-details {
+        flex-grow: 1;
+        margin-left: 8px;
+        margin-right: 8px;
+        white-space: pre-wrap;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        span {
+            display: inline-block;
+        }
+
+        .title {
+            font-weight: $font-weight-bold;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            opacity: 0.7;
+            font-size: 85%;
+        }
+    }
+
+    &.selected {
+        min-height: 25px;
+
+        .item-details {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
+
+            span {
+                display: inline-block;
+            }
+
+            .title {
+                font-weight: $font-weight-bold;
+                margin-right: 5px;
+            }
+
+            .subtitle {
+                opacity: 0.7;
+                font-size: 80%;
+            }
+        }
+    }
+}
+
+
+@include media-breakpoint-up(md) {
+    .multiselect-wrapper {
+        .add-new-link {
+            display: block;
+        }
+    }
+}

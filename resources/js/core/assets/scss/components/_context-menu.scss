@@ -1,0 +1,43 @@
+@import "~@js/core/assets/scss/partials/palettes";
+
+$backgroundColor: map-get($colors, 'darker');
+$foregroundColor: map-get($colors, 'light');
+$highlightColor: map-get($colors, 'insti');
+
+.ctx-menu-container {
+    .ctx-menu {
+        padding: 0.5rem 0;
+        color: $body-color;
+        background: $dropdown-bg;
+        box-shadow: $dropdown-box-shadow;
+        border: $dropdown-border-width solid $dropdown-border-color;
+        border-radius: $dropdown-border-radius;
+        font-size: 1rem;
+        min-width: 12rem;
+        opacity: 0;
+
+        > li {
+            padding: .5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 400;
+            clear: both;
+            color: $dark;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+
+            &:hover {
+                color: $gray-darker;
+                text-decoration: none;
+                background-color: $list-group-hover-bg;
+                cursor: default;
+            }
+        }
+    }
+
+    .open > .ctx-menu {
+        opacity: 1;
+        animation: show-navbar-dropdown .25s ease forwards;
+    }
+}

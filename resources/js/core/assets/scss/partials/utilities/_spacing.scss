@@ -1,0 +1,215 @@
+// Spacing columns vertically
+
+.row.row-grid > [class*="col-"] + [class*="col-"] {
+    margin-top: 3rem;
+}
+
+//margin from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .m-#{$i * 5} {
+    margin: #{$i * 5}px !important;
+  }
+}
+//margin-left from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .m-l-#{$i * 5} {
+    margin-left: #{$i * 5}px !important;
+  }
+}
+//margin-right from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .m-r-#{$i * 5} {
+    margin-right: #{$i * 5}px !important;
+  }
+}
+//margin-top from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .m-t-#{$i * 5} {
+    margin-top: #{$i * 5}px !important;
+  }
+}
+//margin-bottom from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .m-b-#{$i * 5} {
+    margin-bottom: #{$i * 5}px !important;
+  }
+}
+
+//margin from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .m-n-#{$i * 5} {
+    margin: -#{$i * 5}px !important;
+  }
+}
+//margin-left from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .m-l-n-#{$i * 5} {
+    margin-left: -#{$i * 5}px !important;
+  }
+}
+//margin-right from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .m-r-n-#{$i * 5} {
+    margin-right: -#{$i * 5}px !important;
+  }
+}
+//margin-top from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .m-t-n-#{$i * 5} {
+    margin-top: -#{$i * 5}px !important;
+  }
+}
+//margin-bottom from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .m-b-n-#{$i * 5} {
+    margin-bottom: -#{$i * 5}px !important;
+  }
+}
+
+
+//padding from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .p-#{$i * 5} {
+    padding: #{$i * 5}px !important;
+  }
+}
+//padding-left from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .p-l-#{$i * 5} {
+    padding-left: #{$i * 5}px !important;
+  }
+}
+//padding-right from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .p-r-#{$i * 5} {
+    padding-right: #{$i * 5}px !important;
+  }
+}
+//padding-top from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .p-t-#{$i * 5} {
+    padding-top: #{$i * 5}px !important;
+  }
+}
+//padding-bottom from 0 to 100px in 5px increments
+@for $i from 0 through 10 {
+  .p-b-#{$i * 5} {
+    padding-bottom: #{$i * 5}px !important;
+  }
+}
+
+.mt-element { margin-top: $side-margin !important; }
+.mr-element { margin-right: $side-margin !important; }
+.mb-element { margin-bottom: $side-margin !important; }
+.ml-element { margin-left: $side-margin !important; }
+.my-element { margin-top: $side-margin !important; margin-bottom: $side-margin !important; }
+.mx-element { margin-left: $side-margin !important; margin-right: $side-margin !important; }
+
+
+@include media-breakpoint-up(lg) {
+    .row.row-grid > [class*="col-lg-"] + [class*="col-lg-"] {
+        margin-top: 0;
+    }
+}
+@include media-breakpoint-up(md) {
+    .row.row-grid > [class*="col-md-"] + [class*="col-md-"] {
+        margin-top: 0;
+    }
+}
+@include media-breakpoint-up(sm) {
+    .row.row-grid > [class*="col-sm-"] + [class*="col-sm-"] {
+        margin-top: 0;
+    }
+}
+
+.row-grid + .row-grid {
+    margin-top: 3rem;
+}
+
+// Negative margins and paddings
+
+@media(min-width: 992px) {
+    [class*="mt--"],
+    [class*="mr--"],
+    [class*="mb--"],
+    [class*="ml--"] {
+        position: relative;
+        z-index: 5;
+    }
+
+
+    // Large negative margins in pixels
+
+    .mt--100 {
+        margin-top: -100px !important;
+    }
+    .mr--100 {
+        margin-right: -100px !important;
+    }
+    .mb--100 {
+        margin-bottom: -100px !important;
+    }
+    .ml--100 {
+        margin-left: -100px !important;
+    }
+    .mt--150 {
+        margin-top: -150px !important;
+    }
+    .mb--150 {
+        margin-bottom: -150px !important;
+    }
+    .mt--200 {
+        margin-top: -200px !important;
+    }
+    .mb--200 {
+        margin-bottom: -200px !important;
+    }
+    .mt--300 {
+        margin-top: -300px !important;
+    }
+    .mb--300 {
+        margin-bottom: -300px !important;
+    }
+
+
+    // Large margins in pixels
+
+    .pt-50 {
+        padding-top: 50px !important;
+    }
+    .pb-50 {
+        padding-bottom: 50px !important;
+    }
+
+    .pt-100 {
+        padding-top: 100px !important;
+    }
+    .pb-100 {
+        padding-bottom: 100px !important;
+    }
+    .pt-150 {
+        padding-top: 150px !important;
+    }
+    .pb-150 {
+        padding-bottom: 150px !important;
+    }
+    .pt-200 {
+        padding-top: 200px !important;
+    }
+    .pb-200 {
+        padding-bottom: 200px !important;
+    }
+    .pt-250 {
+        padding-top: 250px !important;
+    }
+    .pb-250 {
+        padding-bottom: 250px !important;
+    }
+    .pt-300 {
+        padding-top: 300px!important;
+    }
+    .pb-300 {
+        padding-bottom: 300px!important;
+    }
+}
+

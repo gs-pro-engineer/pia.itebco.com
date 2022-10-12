@@ -1,0 +1,14 @@
+.v-tour__target--highlighted {
+    box-shadow: 0 0 0 99999px rgba(0,0,0,.8) !important;
+    opacity: 1 !important;
+}
+
+.v-tour.km-tour {
+    .v-step {
+        box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 4px 6px 0px rgb(0 0 0 / 30%), 0 2px 4px -1px rgb(0 0 0 / 10%);
+    }
+
+    .v-step__button {
+        letter-spacing: 0.6px;
+    }
+}

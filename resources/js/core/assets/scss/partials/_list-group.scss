@@ -1,0 +1,130 @@
+// Space list items
+
+.list-group-space {
+    .list-group-item {
+        margin-bottom: 1.5rem;
+        @include border-radius($list-group-border-radius);
+    }
+}
+
+
+// List group components
+
+.list-group-img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    vertical-align: top;
+    margin: -.1rem 1.2rem 0 -.2rem;
+}
+
+.list-group-content {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 0;
+}
+
+.list-group-content>p {
+    color: $gray-500;
+    line-height: 1.5;
+    margin: .2rem 0 0;
+}
+
+.list-group-heading {
+    font-size: $font-size-base;
+    color: $gray-800;
+}
+
+.list-group-heading>small {
+    float: right;
+    color: $gray-500;
+    font-weight: 500;
+}
+
+.draggable-list {
+    margin-left: 0;
+    padding-left: 0;
+    list-style-type: none;
+    counter-reset: step-counter;
+
+    .draggable-list-item {
+        padding: 0.85rem;
+
+        &+.draggable-list-item {
+            border-top: $border-width solid $input-disabled-bg;
+        }
+
+        &:nth-child(even) {
+            background: $gray-200;
+        }
+
+        &:before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            margin-right: 1rem;
+            font-weight: bold;
+            padding-left: 0.65rem;
+        }
+
+        .handle {
+            cursor: move;
+        }
+    }
+
+    &.no-stripe {
+
+        .draggable-list-item, .draggable-list-item:nth-child(even) {
+            background: none;
+            padding: 0;
+            padding-top: 0.85rem;
+        }
+    }
+
+    &.no-count .draggable-list-item::before {
+        content: '';
+        display: none;
+    }
+
+
+    .child-draggable-list {
+        padding-left: 3rem;
+        margin-right: -0.85rem;
+    }
+
+    .handle {
+        cursor: move;
+    }
+
+    .sortable-ghost {
+        background: $light;
+        padding: 1rem 0;
+    }
+
+    &.striped {
+        & > li {
+            .handle {
+                position: relative;
+                margin-right: 0.5rem;
+                &:after {
+                    content: " ";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    height: 100%;
+                    border-right: 2px solid rgba(0,20,40,0.1);
+                }
+
+            }
+
+            &:nth-child(even) {
+                .handle {
+                    &:after {
+                        border-right: 2px solid rgba(0,20,40,0.15);
+                    }
+                }
+            }
+        }
+    }
+}
+

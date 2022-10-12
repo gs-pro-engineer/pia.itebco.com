@@ -1,0 +1,8 @@
+@import "../palettes";
+
+$light: map-get($default-palette, "light");
+$light: map-set($light, "background-color", map-get($theme-colors, "light"));
+
+$background-palettes: (
+	"light": $light
+);

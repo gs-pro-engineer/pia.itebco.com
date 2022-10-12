@@ -1,0 +1,109 @@
+.sm-uploader {
+    max-width: 100%;
+    .file-selector {
+        .btn {
+            margin-bottom: 0;
+        }
+        &>label {
+
+            .selector-input {
+                display: none;
+            }
+
+            .button-label {
+                margin-left: 0.2rem;
+            }
+        }
+    }
+}
+
+.image-uploader {
+    .image-display-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .image-display {
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: $border-width solid $border-color;
+            border-radius: $border-radius-xl;
+            min-height: 168px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            img {
+                max-width: 100%;
+            }
+
+            &.image-profile {
+                border-radius: 50%;
+                width: 300px;
+                height: 300px;
+                border-width: 8px;
+                border-style: solid;
+                border-color: #fafbfd;
+                box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.08), inset 0 1px 8px 0px rgba(0, 0, 0, 0.08);
+                position: relative;
+                img {
+                    width: 100%;
+                    max-width: 100%;
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        &.dark-bg .image-display {
+            background-color: #313336;
+        }
+
+        .submit-actions {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            .btn {
+                flex-grow: 1;
+            }
+        }
+    }
+
+    .image-uploader-form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .existing-image-actions {
+            margin-right: 1rem;
+        }
+
+        .file-selector {
+            text-align: center;
+        }
+    }
+
+    &.sm {
+        .image-display-wrapper {
+            .image-display {
+                &.image-profile {
+                    width: 180px;
+                    height: 180px;
+                }
+            }
+        }
+    }
+
+    &.md {
+        .image-display-wrapper {
+            .image-display {
+                &.image-profile {
+                    width: 240px;
+                    height: 240px;
+                }
+            }
+        }
+    }
+}

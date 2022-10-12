@@ -1,0 +1,17 @@
+@import "../palettes";
+
+$light: map-get($default-palette, "light");
+$light: map-set($light, "highlight-color", map-get($theme-colors, "danger"));
+$light: map-set($light, "link-color", map-get($theme-colors, "danger"));
+
+$dark: map-get($default-palette, "dark");
+$dark: map-set($dark, "link-color", map-get($theme-colors, "warning"));
+
+$primary: map-get($default-palette, "primary");
+$primary: map-set($primary, "link-color", map-get($theme-colors, "success"));
+
+$typography-palettes: (
+	"light": $light,
+	"dark": $dark,
+	"primary": $primary
+);

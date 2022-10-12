@@ -1,0 +1,76 @@
+@each $color, $value in $colors {
+	@include bg-variant(".bg-#{$color}", $value, true);
+}
+
+@each $color, $value in $theme-colors {
+	@include bg-gradient-variant(".bg-gradient-#{$color}", $value, true);
+}
+
+@each $color, $value in $colors {
+	@include bg-gradient-variant(".bg-gradient-#{$color}", $value, true);
+}
+
+
+// Sections
+
+section {
+    //background-color: section-color("primary");
+}
+
+@each $color, $value in $section-colors {
+    @include bg-variant(".section-#{$color}", $value, true);
+}
+
+@each $color, $value in $theme-colors {
+    @include bg-gradient-variant(".bg-gradient-#{$color}", $value, true);
+}
+
+
+
+$colors: map-merge(map-merge($colors, $theme-colors), $background-colors);
+
+@each $key, $value in $colors {
+  .bg-hover-#{$key} {
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $value !important;
+    }
+  }
+  .color-#{$key} {
+    color: $value !important;
+  }
+  .color-hover-#{$key} {
+    &:hover,
+    &:active,
+    &:focus {
+      color: $value !important;
+    }
+  }
+  .border-color-#{$key} {
+    border-color: $value !important;
+  }
+  .border-color-hover-#{$key} {
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: $value !important;
+    }
+  }
+}
+
+
+// Shape (svg) fill colors
+@each $color, $value in $theme-colors {
+    .fill-#{$color}  {
+        fill: $value;
+    }
+
+    .stroke-#{$color}  {
+        stroke: $value;
+    }
+}
+
+.fill-opacity-8 {
+	fill-opacity: .8;
+}

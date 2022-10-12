@@ -1,0 +1,82 @@
+.skeleton-box {
+    border-radius: $border-radius;
+    background-color: $light;
+    background-image: linear-gradient(90deg, $light 0px, lighten($light, 2%) 70px, $light 140px);
+    background-size: 1000px;
+    animation: shine-lines 3s infinite linear;
+    min-width: 20px;
+    min-height: 10px;
+    margin-bottom: 10px;
+
+    &.skeleton-rectangle {
+        min-height: 150px;
+    }
+    &.skeleton-square, &.skeleton-circle {
+        width: 150px;
+        min-height: 150px;
+        height: 150px;
+    }
+    &.skeleton-circle {
+        border-radius: 50%;
+    }
+
+    &.skeleton-width-xs {
+        width: 25%;
+    }
+    &.skeleton-width-sm {
+        width: 40%;
+    }
+    &.skeleton-width-md {
+        width: 50%;
+    }
+    &.skeleton-width-lg {
+        width: 65%;
+    }
+    &.skeleton-width-xl {
+        width: 80%;
+    }
+    &.skeleton-width-full {
+        width: 100%;
+    }
+
+    &.skeleton-line {
+        &.skeleton-height-xs {
+            min-height: 5px;
+            height: 5px;
+        }
+        &.skeleton-height-sm {
+            min-height: 10px;
+            height: 10px;
+        }
+        &.skeleton-height-md {
+            min-height: 15px;
+            height: 15px;
+        }
+        &.skeleton-height-lg {
+            min-height: 20px;
+            height: 20px;
+        }
+        &.skeleton-height-xl {
+            min-height: 25px;
+            height: 25px;
+        }
+        &.skeleton-height-full {
+            min-height: 100%;
+            height: 100%;
+        }
+    }
+
+}
+
+
+
+@keyframes shine-lines {
+    0% {
+        background-position: -250px;
+    }
+
+    40%,
+    100% {
+        background-position: 250px;
+    }
+}

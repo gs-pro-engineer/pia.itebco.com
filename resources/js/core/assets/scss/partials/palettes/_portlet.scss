@@ -1,0 +1,25 @@
+@import "../palettes";
+
+$light: map-get($default-palette, "light");
+$light: map-set($light, "background-color", #ffffff);
+
+$dark: map-get($default-palette, "dark");
+$primary: map-get($default-palette, "primary");
+$secondary: map-get($default-palette, "secondary");
+$info: map-get($default-palette, "info");
+$success: map-get($default-palette, "success");
+$warning: map-get($default-palette, "warning");
+$danger: map-get($default-palette, "danger");
+
+$portlet-default-palette: $light;
+
+$portlet-palettes: (
+  "light": $light,
+  "dark": $dark,
+  "primary": $primary,
+  "secondary": $secondary,
+  "info": $info,
+  "success": $success,
+  "warning": $warning,
+  "danger": $danger
+);

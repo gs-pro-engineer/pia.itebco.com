@@ -1,0 +1,235 @@
+@import "~@js/core/assets/scss/partials/palettes";
+
+@each $key,
+$value in $default-palette {
+    [data-top-navbar-color="#{$key}"] {
+        .logo {
+            color: map-get($value, "second-foreground-color");
+        }
+    }
+
+    [data-sidebar-left-color="#{$key}"] {
+        .sidebar {
+            .logo-wrapper {
+                .logo {
+                    color: map-get($value, "second-foreground-color");
+                }
+            }
+        }
+    }
+}
+
+
+
+.logo {
+    text-decoration: none;
+
+    &.app-logo {
+        .logo-icon {
+            max-width: 90%;
+            vertical-align: top;
+        }
+
+        .logo-text {
+            height: 100%;
+            margin-left: 10px;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+    }
+
+    &.org-logo {
+        img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        &.navbar-logo, &.sidebar-logo, &.md-logo {
+            img {
+                max-width: 80%;
+                max-height: 70%;
+            }
+        }
+
+        &.sm-logo {
+            img {
+                max-width: 70%;
+                max-height: 60%;
+            }
+        }
+
+        &.xs-logo {
+            img {
+                max-width: 55%;
+                max-height: 45%;
+            }
+        }
+
+        &.xxs-logo {
+            img {
+                max-width: 40%;
+                max-height: 30%;
+            }
+        }
+    }
+
+    &.normal-logo, &.print-header-logo {
+        height: 80px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        &.app-logo {
+            .logo-icon {
+                height: 80%;
+                margin-top: 8px;
+                fill: $dark-primary;
+            }
+
+            .logo-text {
+                font-size: 70px;
+                line-height: 72px;
+                font-weight: 700;
+                text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.7);
+            }
+        }
+
+        &:hover {
+            color: $primary;
+        }
+    }
+
+    &.sidebar-logo, &.navbar-logo {
+        width: $logo-width;
+        display: flex;
+        height: $navbar-height;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        color: inherit;
+
+        &.app-logo {
+            .logo-icon {
+                height: 60%;
+                margin-top: 0px;
+                fill: currentColor;
+            }
+
+            .logo-text {
+                font-size: 40px;
+                line-height: 52px;
+                font-weight: 600;
+                text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.7);
+            }
+        }
+
+        &:hover {
+            color: inherit;
+        }
+
+        &.org-logo {
+            img {
+                max-width: 80%;
+                max-height: 70%;
+            }
+        }
+    }
+
+    &.print-header-logo {
+        height: 100px;
+        justify-content: start;
+        align-items: flex-start;
+
+        img {
+            min-height: 50%;
+            min-width: 50%;
+            max-height: 90%;
+        }
+    }
+
+    &.navbar-logo {
+
+    }
+
+    &.inline-logo {
+        height: 25px;
+
+        &.app-logo {
+            .logo-icon {
+                margin-top: 0px;
+            }
+
+            .logo-text {
+                margin-left: 5px;
+                font-size: 24px;
+                line-height: 20px;
+                font-weight: 600;
+                letter-spacing: 0.3px;
+                text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.7)
+            }
+        }
+
+
+        &.org-logo {
+            img {
+                max-width: 90%;
+                max-height: 90%;
+            }
+        }
+    }
+}
+
+.sidebar {
+    .logo-wrapper {
+        background: transparent;
+
+        .logo {
+            margin-left: $side-margin-less;
+            .title {
+                text-shadow: none;
+            }
+        }
+    }
+}
+
+
+@include media-breakpoint-up(lg) {
+    [data-sidebar-left-style="push-content"][data-sidebar-left-show="true"] {
+        .navbar {
+            .logo {
+                &.navbar-logo {
+                    width: $sidebar-width;
+                }
+            }
+        }
+    }
+
+    [data-sidebar-left-style="folded"] {
+        .navbar {
+            .logo {
+                &.navbar-logo {
+                    width: $logo-width;
+                }
+            }
+        }
+    }
+
+    .sidebar {
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap !important;
+            border-bottom: $border-width solid rgba(0, 20, 40, 0.2);
+
+            .logo {
+                width: $logo-width;
+            }
+
+            .seperator {
+                flex-grow: 1;
+            }
+        }
+    }
+}

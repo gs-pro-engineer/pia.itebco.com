@@ -1,0 +1,13 @@
+
+.headroom {
+    will-change: transform;
+    transition: $transition-all-easeinout;
+}
+.headroom--pinned {
+	@extend .position-fixed;
+    transform: translateY(0%);
+}
+.headroom--unpinned {
+	@extend .position-fixed;
+    transform: translateY(-100%);
+}

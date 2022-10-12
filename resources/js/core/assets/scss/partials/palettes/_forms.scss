@@ -1,0 +1,15 @@
+@import "../palettes";
+
+$light: map-get($default-palette, "light");
+$dark: map-get($default-palette, "dark");
+$primary: map-get($default-palette, "primary");
+
+$light: map-set($light, 'focus-color', map-get($theme-colors, 'info'));
+$dark: map-set($dark, 'focus-color', map-get($theme-colors, 'info'));
+$primary: map-set($primary, 'focus-color', map-get($theme-colors, 'info'));
+
+$form-palettes: (
+	"light": $light,
+	"dark": $dark,
+	"primary": $primary
+);

@@ -1,0 +1,214 @@
+//globl transition css
+
+/*fade*/
+.fade-enter-active,
+.fade-leave-active {
+    transition-duration: 0.7s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+    opacity: 0
+}
+
+/*slide*/
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+    transition-duration: 0.7s;
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+    opacity: 0;
+    transform: translate(2em, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+    opacity: 0;
+    transform: translate(-2em, 0);
+}
+
+/*vslide*/
+.vslide-left-enter-active,
+.vslide-left-leave-active,
+.vslide-right-enter-active,
+.vslide-right-leave-active {
+    transition-duration: 0.7s;
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.vslide-left-enter,
+.vslide-right-leave-active {
+    opacity: 0;
+    transform: translateY(2em, 0);
+}
+
+.vslide-left-leave-active,
+.vslide-right-enter {
+    opacity: 0;
+    transform: translateY(-2em, 0);
+}
+
+/*zoom*/
+.zoom-enter-active,
+.zoom-leave-active {
+    animation-duration: 0.7s;
+    animation-fill-mode: both;
+    animation-name: zoom;
+}
+
+.zoom-leave-active {
+    animation-direction: reverse;
+}
+
+/*fade-transform*/
+.fade-transform-left-leave-active,
+.fade-transform-left-enter-active,
+.fade-transform-right-leave-active,
+.fade-transform-right-enter-active {
+    transition-duration: 0.7s;
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.fade-transform-left-enter,
+.fade-transform-right-leave-active {
+    opacity: 0;
+    transform: translate(2em, 0);
+}
+
+.fade-transform-left-leave-active,
+.fade-transform-right-enter {
+    opacity: 0;
+    transform: translate(-2em, 0);
+}
+
+/*title transition*/
+.title-enter-active,
+.title-leave-active {
+    transition: all .5s;
+}
+
+.title-enter,
+.title-leave-active {
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.title-leave-active {
+    position: absolute;
+}
+
+/*title transition*/
+.actions-enter-active,
+.actions-leave-active {
+    transition: all .5s;
+}
+
+.actions-enter,
+.actions-leave-active {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.actions-leave-active {
+    position: absolute;
+}
+
+/*breadcrumb transition*/
+.breadcrumb-enter-active,
+.breadcrumb-leave-active {
+    transition: all .5s;
+}
+
+.breadcrumb-enter,
+.breadcrumb-leave-active {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.breadcrumb-move {
+    transition: all .5s;
+}
+
+.breadcrumb-leave-active {
+    position: absolute;
+}
+
+/*menuFoldUp transition*/
+@keyframes menuFoldUp {
+    0% {
+        opacity: 1;
+        transform-origin: 50% 100%;
+        transform: perspective(400px) rotateX(-90deg);
+        transform-origin: 50% 0;
+        max-height: 0px;
+    }
+
+    to {
+        opacity: 1;
+        transform-origin: 50% 100%;
+        transform: perspective(400px) rotateX(0);
+        max-height: 1000px;
+    }
+}
+
+.menuFoldUp {
+    animation-name: menuFoldUp;
+    overflow: hidden;
+}
+
+/*show-dropdown-up-collapse transition*/
+@keyframes show-dropdown-up-collapse {
+    0% {
+        opacity: 0;
+        transform: translate(0, 15px) perspective(200px);
+        transition: visibility 0.25s, opacity 0.25s, transform 0.25s;
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+.show-dropdown-up {
+    animation: show-dropdown-up-collapse .2s ease forwards;
+}
+
+/*show-dropdown-down-collapse transition*/
+@keyframes show-dropdown-down-collapse {
+    0% {
+        opacity: 0;
+        transform: translate(0, -15px) perspective(200px);
+        transition: visibility 0.25s, opacity 0.25s, transform 0.25s;
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+.show-dropdown-down {
+    animation: show-dropdown-down-collapse .2s ease forwards;
+}
+
+@keyframes zoom {
+    from {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

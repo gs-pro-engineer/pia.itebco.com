@@ -1,0 +1,75 @@
+@import "./variables";
+@import "./functions";
+
+// Palette: a map object containing 7 related colors
+@function palette(
+	$background-color,
+	$odd-color,
+	$even-color,
+	$hover-color,
+	$border-color,
+	$foreground-color,
+	$second-foreground-color,
+	$highlight-color
+) {
+	@return (
+		'background-color': $background-color,
+		'odd-color': $odd-color,
+		'even-color': $even-color,
+		'hover-color': $hover-color,
+		'border-color': $border-color,
+		'foreground-color': $foreground-color,
+		'second-foreground-color': $second-foreground-color,
+		'highlight-color': $highlight-color
+	)
+};
+
+// Returns a light palette
+@function light-palette($background-color, $amount, $foreground-color, $second-foreground-color, $highlight-color) {
+	@return palette(
+		map-get($theme-colors, $background-color),
+		darken(map-get($theme-colors, $background-color), $amount * 1),
+		darken(map-get($theme-colors, $background-color), $amount * 2),
+		darken(map-get($theme-colors, $background-color), $amount * 3),
+		darken(map-get($theme-colors, $background-color), $amount * 4),
+		map-get($theme-colors, $foreground-color),
+		map-get($theme-colors, $second-foreground-color),
+		map-get($theme-colors, $highlight-color)
+	)
+};
+
+// Returns a dark palette
+@function dark-palette($background-color, $amount, $foreground-color, $second-foreground-color, $highlight-color) {
+	@return palette(
+		map-get($theme-colors, $background-color),
+		lighten(map-get($theme-colors, $background-color), $amount * 1),
+		lighten(map-get($theme-colors, $background-color), $amount * 2),
+		lighten(map-get($theme-colors, $background-color), $amount * 3),
+		lighten(map-get($theme-colors, $background-color), $amount * 4),
+		map-get($theme-colors, $foreground-color),
+		map-get($theme-colors, $second-foreground-color),
+		map-get($theme-colors, $highlight-color)
+	)
+};
+
+$amount: 3;
+//default colors for palettes
+$default-palette: (
+	'primary': dark-palette('primary', $amount, 'light', 'white', 'redish'),
+	'light-primary': dark-palette('light-primary', $amount, 'light', 'white', 'redish'),
+	'dark-primary': dark-palette('dark-primary', $amount, 'light', 'white', 'redish'),
+	'secondary': dark-palette('secondary', $amount, 'dark', 'black', 'redish'),
+	'dark-secondary': dark-palette('dark-secondary', $amount, 'dark', 'black', 'redish'),
+	'success': dark-palette('success', $amount, 'light', 'white', 'primary'),
+	'info': dark-palette('info', $amount, 'light', 'white', 'redish'),
+	'warning': dark-palette('warning', $amount, 'light', 'white', 'primary'),
+	'danger': dark-palette('danger', $amount, 'light', 'white', 'primary'),
+	'white': light-palette('white', $amount, 'dark', 'black', 'primary'),
+	'whitish': light-palette('whitish', $amount, 'dark', 'gray-darker', 'primary'),
+	'light': light-palette('light', $amount, 'dark', 'gray-darker', 'primary'),
+	'dark': dark-palette('dark', $amount, 'light', 'white', 'primary'),
+	'gray-darker': dark-palette('gray-darker', $amount, 'light', 'white', 'primary'),
+	'gray-darkest': dark-palette('gray-darkest', $amount, 'light', 'white', 'primary'),
+	'black': dark-palette('black', $amount, 'light', 'white', 'primary'),
+	'default-color': dark-palette('default-color', $amount, 'light', 'white', 'primary')
+);

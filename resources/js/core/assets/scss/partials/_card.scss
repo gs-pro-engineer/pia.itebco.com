@@ -1,0 +1,155 @@
+.card {
+    position: relative;
+    overflow: hidden;
+
+    .card-header {
+        display: flex;
+        background: transparent;
+
+        .card-title, .card-actions {
+            margin-top: -$card-spacer-y;
+            margin-bottom: -$card-spacer-y;
+        }
+
+        .card-title {
+            margin-left: -$card-spacer-x;
+            padding: $card-spacer-y $card-spacer-x;
+            flex-grow: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: inherit;
+            
+            h5 {
+                margin-bottom: 0;
+                color: inherit;
+            }
+        }
+        .card-actions {
+            margin-right: -$card-spacer-x;
+            margin-left: $card-spacer-x;
+            padding-right: 0.5rem;
+            display: flex;
+            justify-content: flex-end;
+
+            .btn.action {
+                flex-grow: 1;
+                padding: 0 1rem;
+                margin: 0;
+                color: inherit;
+                background: none;
+                outline: none;
+                box-shadow: none;
+                font-size: 75%;
+                opacity: 0.7;
+
+                &:hover {
+                    opacity: 1;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    .card-body {
+        overflow: hidden;
+    }
+}
+
+.profile-page {
+    .card-profile {
+        margin-top: -150px;
+
+        .card-profile-image {
+            position: relative;
+            //min-height: 130px;
+
+            img {
+                max-width: 180px;
+                border-radius: $border-radius;
+                @extend .shadow;
+                transform: translate(-50%,-30%);
+                position: absolute;
+                left: 50%;
+                transition: $transition-base;
+
+                &:hover {
+                    transform: translate(-50%, -33%);
+                }
+            }
+        }
+
+        .card-profile-stats {
+            padding: 1rem 0;
+
+            > div {
+                text-align: center;
+                margin-right: 1rem;
+                padding: .875rem;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                .heading {
+                    font-size: 1.1rem;
+                    font-weight: bold;
+                    display: block;
+                }
+                .description {
+                    font-size: .875rem;
+                    color: $gray-500;
+                }
+            }
+        }
+
+        .card-profile-actions {
+            padding: .875rem;
+        }
+
+        @include media-breakpoint-down(xs) {
+            .card-profile-actions {
+                margin-top: 110px;
+            } 
+        }
+
+        @include media-breakpoint-between(sm, md) {
+            .card-profile-stats {
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+// Card with blockquotes
+
+.card {
+    .card-blockquote {
+        padding: 2rem;
+        position: relative;
+
+        .svg-bg {
+            display: block;
+            width: 100%;
+            height: 95px;
+            position: absolute;
+            top: -94px;
+            left: 0;
+        }
+    }
+}
+
+// Animated cards
+
+.card-lift--hover {
+    &:hover {
+        transform: translateY(-20px);
+        @include transition($transition-base);
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .card {
+        margin-bottom: $side-margin;
+    }
+}
